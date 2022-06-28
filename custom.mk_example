@@ -1,0 +1,10 @@
+#this is an example of Makefile customuzation make the symlink of this file to custom.mk to apply
+
+#if you would like to share and develop library from other cmake_docker based projects
+#then build it in shared dir. Take into account that debug will try to find sources by wrong path. 
+#you will need to replace path in gdb
+BUILD_DIR = /shared/softeq-common-library
+
+define DOCKER_WRAPPER
+    CMAKE_SHARED_VOL=$(abspath ../shared) CMAKE_VOL=${PWD} CMAKE_IMAGE=${DOCKER_IMAGE_NAME} cmake_docker "${1}"
+endef

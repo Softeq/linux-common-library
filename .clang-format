@@ -1,0 +1,25 @@
+Language: Cpp
+Standard: Cpp11
+
+BasedOnStyle: None
+DisableFormat: false
+AlignTrailingComments: true
+AccessModifierOffset: -4
+BreakBeforeBraces: Allman
+#BreakInheritanceList: BeforeColon
+BreakBeforeInheritanceComma: true
+ColumnLimit: 120
+BreakConstructorInitializers: BeforeComma
+AlwaysBreakTemplateDeclarations: true
+#AllowShortLambdasOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+IndentWidth: 4
+KeepEmptyLinesAtTheStartOfBlocks: false
+PointerBindsToType: false
+SpacesBeforeTrailingComments: 1
+TabWidth: 8
+UseTab: Never

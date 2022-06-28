@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sample HTML</title>
+    <meta charset="utf-8"/>
+    <style>
+     body {
+       background-color: #777;
+       color: white;
+     }
+     /* This stylesheet sets the width of all images to 100%: */
+     img {
+       width: 100%;
+     }
+    </style>
+  </head>
+  <body>
+
+    <h2>Styling Images</h2>
+    <p>The image below has the width attribute set to 128 pixels, but the stylesheet overrides it, and sets the width to 100%.</p>
+    <img src="html5.gif" alt="HTML5 Icon" width="128" height="128">
+
+    <p>The image below uses the style attribute, where the width is set to 128 pixels which overrides the stylesheet:</p>
+    <img src="html5.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+
+    <h2>Session management</h2>
+    <label for="session_data">Data for the session:</label>
+    <form id="myForm" action="/create_session" method="post">
+      <textarea id="session_data" name="data" rows="4" cols="50">
+At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+      </textarea>
+      <br>
+      <input type="submit" value="Create session">
+    </form>
+    <hr>
+    <input type="button" onclick="restore()" value="Restore session">
+    <br>
+    <div>
+      Restored data for the session: <div id="sessionId"></div>
+      It will expire at: <div id="sessionExpiry"></div>
+    </div>
+    <div id="sessionData"></div>
+    <script>
+     function sendData() {
+       const XHR = new XMLHttpRequest();
+       const FD = new FormData( form );
+       XHR.addEventListener( "load", function(event) {
+         document.getElementById("sessionId").innerText = this.getResponseHeader("X-Session");
+         document.getElementById("sessionExpiry").innerText =  this.getResponseHeader("X-Session-Expiry");
+       } );
+       XHR.addEventListener( "error", function( event ) {
+         alert( 'Oops! Something went wrong.' );
+       } );
+       XHR.open( form.method, form.action );
+       XHR.send( FD );
+     }
+
+     function restore() {
+       const XHR = new XMLHttpRequest();
+       XHR.addEventListener( "load", function(event) {
+         document.getElementById("sessionData").innerText = this.responseText;
+       } );
+       XHR.addEventListener( "error", function( event ) {
+         alert( 'Oops! Something went wrong.' );
+       } );
+       XHR.open( "post", "/restore_session" );
+       XHR.setRequestHeader("X-Session", document.getElementById("sessionId").innerText);
+       XHR.send();
+     }
+
+     const form = document.getElementById( "myForm" );
+
+     var sessionId = null;
+
+     form.addEventListener( "submit", function ( event ) {
+       event.preventDefault();
+
+       sendData();
+     } );
+    </script>
+  </body>
+</html>
