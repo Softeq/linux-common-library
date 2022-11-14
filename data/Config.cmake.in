@@ -1,0 +1,4 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/@PRODUCT_NAMESPACE@-@PROJECT_NAME@.cmake")
+check_required_components("@PRODUCT_NAMESPACE@-@PROJECT_NAME@")

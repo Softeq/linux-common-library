@@ -1,0 +1,5 @@
+build/
+.vscode/
+.devcontainer/
+compile_commands.json
+*.user

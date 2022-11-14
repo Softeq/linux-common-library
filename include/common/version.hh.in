@@ -1,0 +1,19 @@
+#ifndef LIBCOMMON_VERSION_HH
+#define LIBCOMMON_VERSION_HH
+
+#include <string>
+
+#define PROJECT_VERSION_GENERATION @PROJECT_VERSION_MAJOR @
+#define PROJECT_VERSION_MAJOR @PROJECT_VERSION_MINOR @
+#define PROJECT_VERSION_MINOR @PROJECT_VERSION_PATCH @
+#define PROJECT_VERSION_BUILD @PROJECT_VERSION_BUILD @
+
+namespace softeq
+{
+namespace common
+{
+std::string getVersion();
+}
+} // namespace softeq
+
+#endif // LIBCOMMON_VERSION_HH
